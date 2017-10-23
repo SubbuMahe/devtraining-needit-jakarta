@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element audit="true" extends="task" label="NeedIt" max_length="40" name="x_58872_needit_needit" sizeclass="5" type="collection">
+        <element label="Requested for" mandatory="true" max_length="32" name="u_requested_for" reference="sys_user" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Request type" mandatory="true" max_length="40" name="u_request_type" type="string" use_dependent_field="true">
+            <choice>
+                <element label="Human Resource" sequence="0" value="hr"/>
+                <element label="Facilities" sequence="1" value="facilities"/>
+                <element label="Legal" sequence="2" value="legal"/>
+                <element label="Your Department Choice" sequence="3" value="your_choice"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" dependent="u_request_type" dependent_on_field="u_request_type" label="What needed" mandatory="true" max_length="40" name="u_what_needed" type="string" use_dependent_field="true">
+            <choice>
+                <element dependent_value="hr" label="hr1" sequence="0" value="hr1"/>
+                <element dependent_value="hr" label="hr2" sequence="1" value="hr2"/>
+                <element dependent_value="facilities" label="fac1" sequence="2" value="fac1"/>
+                <element dependent_value="facilities" label="fac2" sequence="3" value="fac2"/>
+                <element dependent_value="legal" label="l1" sequence="4" value="l1"/>
+                <element dependent_value="legal" label="l2" sequence="5" value="l2"/>
+                <element dependent_value="your_choice" label="dep1" sequence="6" value="dep1"/>
+                <element dependent_value="your_choice" label="dep2" sequence="7" value="dep2"/>
+            </choice>
+        </element>
+        <element label="When needed" mandatory="true" max_length="40" name="u_when_needed" type="glide_date_time"/>
+    </element>
+</database>
